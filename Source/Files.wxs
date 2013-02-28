@@ -1,0 +1,150 @@
+<?xml version="1.0"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+
+    <!--
+      Defined in Setup.wxs, the "TARGETDIR" is not actually created, it's just a crutch
+      in WiX to allow the files to share a common root
+    -->
+    <DirectoryRef Id="TARGETDIR">
+
+      <!--
+        ProgramMenuFolder is a special name that resolves to the start menu folder.
+        The files (see below) can indicate that they want a shortcut created in
+        another folder. By defining this folder, we can make them put a shortcut
+        into the start menu!
+      -->
+      <Directory Id='ProgramMenuFolder' Name='Programs'>
+    	<Directory Id="CynertoneMenuFolder" Name="Cybertone">
+	        <Directory Id='XNADemoProgramMenuFolder' Name='XNA Demo'>
+				<Component Id="StartMenuEntriesComponent" Guid="d5dc9ece-2159-48c8-93a3-803981671f48" DiskId="1">
+				<RemoveFolder Id='CynertoneMenuFolder' On='uninstall' />          
+				<RemoveFolder Id='XNADemoProgramMenuFolder' On='uninstall' />          
+			    <RegistryValue
+			      Root='HKCU'
+			      Key='SOFTWARE\Cybertone\XNADemo'
+			      Type='string'
+			      Value='installed'
+			      KeyPath='yes'
+			    />
+				</Component>
+    	    </Directory>
+      	</Directory>
+      </Directory>
+
+      <!--
+        ProgramFilesFolder is a special name that is resolved to the system's
+        programs folder. This entry makes sure that INSTALLDIR, displayed in
+        directory selection dialog, initially points to "C:\Program files\MyGame".
+        Note that this does not prevent the user from selecting an entirely
+        different path like "D:\Games\MyGame".
+      -->
+      <Directory Id="ProgramFilesFolder" Name="PFiles">
+ 
+        <!--
+          Target directory you game will be installed to. Create more <Directory />
+          elements below this one to create subdirectories or add <File /> elements
+          to add files to a directory
+        -->
+        <Directory Id="INSTALLDIR" Name="XNADemo">
+      		<Directory Id="Content" Name="Content">
+        		<Directory Id="Audio" Name="Audio">
+      				<Component Id="MainThemeWMA" Guid="eb1baa61-41e1-476e-a58f-f6e530a5799a">
+						<File
+							Id="MainThemeWMA"
+							Name="MainTheme.wma"
+							Source="$(sys.SOURCEFILEDIR)/../Content/Content/Audio/MainTheme.wma" />
+      				</Component>
+        			<Component Id="MainThemeXNB" Guid="64d1e060-10ec-4eb5-b0eb-6e10e77b7a9e">
+						<File
+							Id="MainThemeXNB"
+							Name="MainTheme.xnb"
+							Source="$(sys.SOURCEFILEDIR)/../Content/Content/Audio/MainTheme.xnb" />
+					</Component>
+      			</Directory>
+        		<Directory Id="Mesh" Name="Mesh">
+      				<Component Id="dudeXNB" Guid="8fba5477-d82a-4f10-b734-23fb3faa3e5f">
+        				<File
+        					Id="dudeXNB"
+        					Name="dude.xnb"
+        					Source="$(sys.SOURCEFILEDIR)/../Content/Content/Mesh/dude.xnb" />
+        			</Component>
+      				<Component Id="head_0XNB" Guid="05468aca-88ad-4a17-a481-250cc8e1c5c0">
+        				<File
+        					Id="head_0XNB"
+        					Name="head_0.xnb"
+      						Source="$(sys.SOURCEFILEDIR)/../Content/Content/Mesh/head_0.xnb" />
+        			</Component>
+      				<Component Id="jacket_0XNB" Guid="3f928ee5-fcb4-4544-a3b6-918b9acf1744">
+        				<File
+        					Id="jacket_0XNB"
+        					Name="jacket_0.xnb"
+        					Source="$(sys.SOURCEFILEDIR)/../Content/Content/Mesh/jacket_0.xnb" />
+        			</Component>
+      				<Component Id="pants_0XNB" Guid="dc2529cb-ed85-4111-8725-0223a34507d3">
+        				<File
+        					Id="pants_0XNB"
+        					Name="pants_0.xnb"
+        					Source="$(sys.SOURCEFILEDIR)/../Content/Content/Mesh/pants_0.xnb" />
+        			</Component>
+      				<Component Id="upBodyC_0XNB" Guid="869e68f7-367b-49aa-a65e-45ce49a99455">
+        				<File
+        					Id="upBodyC_0XNB"
+        					Name="upBodyC_0.xnb"
+        					Source="$(sys.SOURCEFILEDIR)/../Content/Content/Mesh/upBodyC_0.xnb" />
+        			</Component>
+      			</Directory>
+        	</Directory>
+
+          <!--
+            Any <File /> element must be contained in a <Component /> element.
+            Components are entirely internal to the installs and group inseperable
+            partS of your game. For example, you could have 4 components:
+            "shared", "game", "editor" and "docs".
+
+            An installer then sets up a series of features (see <Feature /> in Setup.wxs),
+            where each feature points to a number of components. Following the previous
+            example, two features named "game" and "editor" could be imagined where
+            both point to the "shared" component and to their own component.
+          -->
+			<Component Id="GameExecutableAndLicense" Guid="a04fbdf9-b110-4559-afb0-9a6f04a8335a" DiskId="1">
+				<File
+					Id="LicenseFile" Name="license.rtf"
+					Source="$(sys.SOURCEFILEDIR)/../Documents/license.rtf"
+				/>
+				<!-- <File
+					Id="IconFile" Name="Game.ico"
+					Source="$(sys.SOURCEFILEDIR)/../Content/Game.ico"
+				/> -->
+				<File
+					Id="GameExecutable" Name="XNADemo.exe" KeyPath="yes"
+					Source="$(sys.SOURCEFILEDIR)/../Content/XNADemo.exe">
+					
+		<!--
+		Let the installer create a shorcut to this file in the start menu. There are
+		several ways to do this. For some more in-depth explanation, visit this url: 
+		
+		http://blogs.technet.com/alexshev/pages/from-msi-to-wix-part-10-shortcuts.aspx
+		-->
+					<Shortcut
+						Id="MyGameShortcut"
+						Name="XNA Demo"
+						Directory="MyGameProgramMenuFolder"
+						Advertise="yes"
+						WorkingDirectory="INSTALLDIR" Icon="GameIcon.exe"
+					>
+						<Icon Id="GameIcon.exe" SourceFile="$(sys.SOURCEFILEDIR)/../Content/Game.ico" />
+					</Shortcut>
+				</File>
+			</Component>
+			<Component Id="SkinnedModelDll" Guid="ef5e795b-f33f-4b8c-a442-1bb62c1747f0">
+	        	<File
+					Id="SkinnedModelDll"
+	        		Name="SkinnedModel.dll"
+	        		Source="$(sys.SOURCEFILEDIR)/../Content/SkinnedModel.dll" />
+        	</Component>
+        </Directory>
+      </Directory>
+    </DirectoryRef>
+  </Fragment>
+</Wix>
