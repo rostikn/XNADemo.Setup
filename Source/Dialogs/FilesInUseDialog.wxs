@@ -2,7 +2,7 @@
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
   <Fragment>
     <UI>
-      <Dialog Id="FilesInUse" Width="370" Height="270" Title="[ProductName] [Setup]" NoMinimize="yes" KeepModeless="yes">
+      <Dialog Id="FilesInUse" Width="370" Height="270" Title="[Manufacturer] [ProductName] [Setup]" NoMinimize="yes" KeepModeless="yes">
     		<Control Id="Retry" Type="PushButton" X="156" Y="243" Width="64" Height="17" Default="yes" Cancel="no" Text="[ButtonText_Retry]">
       		<Publish Event="EndDialog" Value="Retry"><![CDATA[1]]></Publish>
       	</Control>

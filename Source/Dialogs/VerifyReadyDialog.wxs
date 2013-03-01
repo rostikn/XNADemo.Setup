@@ -2,7 +2,7 @@
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
   <Fragment>
     <UI>
-      <Dialog Id="VerifyReadyDialog" Width="370" Height="270" Title="[ProductName]" TrackDiskSpace="yes">
+      <Dialog Id="VerifyReadyDialog" Width="370" Height="270" Title="[Manufacturer] [ProductName]" TrackDiskSpace="yes">
         <Control Id="Install" Type="PushButton" X="236" Y="243" Width="56" Height="17" Default="yes" Text="[Button_Install]">
           <Publish Event="EndDialog" Value="Return">OutOfDiskSpace &lt;&gt; 1</Publish>
           <Publish Event="SpawnDialog" Value="OutOfRbDiskDlg">OutOfDiskSpace = 1 AND OutOfNoRbDiskSpace = 0 AND (PROMPTROLLBACKCOST="P" OR NOT PROMPTROLLBACKCOST)</Publish>
@@ -26,7 +26,7 @@
         <Control Id="BannerLine" Type="Line" X="0" Y="44" Width="370" Height="0" />
         <Control Id="BottomLine" Type="Line" X="4" Y="234" Width="370" Height="0" />
         <Control Id="Description" Type="Text" X="25" Y="23" Width="280" Height="15" Transparent="yes" NoPrefix="yes">
-          <Text>The [ProductName] setup assistant is ready to begin the installation</Text>
+          <Text>The [Manufacturer] [ProductName] setup assistant is ready to begin the installation</Text>
         </Control>
         <Control Id="Title" Type="Text" X="15" Y="6" Width="200" Height="15" Transparent="yes" NoPrefix="yes">
           <Text>[TitleFont]Ready to Install</Text>

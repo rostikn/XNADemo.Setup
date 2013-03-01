@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 9.00
 # Visual Studio 2005
 # SharpDevelop 3.2.1.6466
-Project("{CFEE4113-1246-4D54-95CB-156813CB8593}") = "MyGame", "MyGame.wixproj", "{92D4EEE8-32EC-43B9-87EC-EC9A3416B37F}"
+Project("{CFEE4113-1246-4D54-95CB-156813CB8593}") = "Cybertone.XNA40Demo.Setup", "Cybertone.XNA40Demo.Setup.wixproj", "{92D4EEE8-32EC-43B9-87EC-EC9A3416B37F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

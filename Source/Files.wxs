@@ -15,20 +15,29 @@
         into the start menu!
       -->
       <Directory Id='ProgramMenuFolder' Name='Programs'>
-    	<Directory Id="CynertoneMenuFolder" Name="Cybertone">
-	        <Directory Id='XNADemoProgramMenuFolder' Name='XNA Demo'>
-				<Component Id="StartMenuEntriesComponent" Guid="d5dc9ece-2159-48c8-93a3-803981671f48" DiskId="1">
-				<RemoveFolder Id='CynertoneMenuFolder' On='uninstall' />          
-				<RemoveFolder Id='XNADemoProgramMenuFolder' On='uninstall' />          
-			    <RegistryValue
-			      Root='HKCU'
-			      Key='SOFTWARE\Cybertone\XNADemo'
-			      Type='string'
-			      Value='installed'
-			      KeyPath='yes'
-			    />
+    	<Directory Id="CybertoneMenuFolder" Name="Cybertone">
+	        <Directory Id='XNADemoProgramMenuFolder' Name='XNA 4.0 Demo'>
+				<Component Id="StartMenuGameEntriyComponent" Guid="d5dc9ece-2159-48c8-93a3-803981671f48" DiskId="1">
+	        		<RemoveFolder Id='XNADemoProgramMenuFolder' On='uninstall' />
+				    <RegistryValue
+				      Root='HKCU'
+				      Key='SOFTWARE\Cybertone\XNADemo'
+				      Type='string'
+				      Value='installed'
+				      KeyPath='yes'
+				    />
 				</Component>
     	    </Directory>
+    		<Component Id="CybertoneMenuCompanyEntryComponent" Guid="b976b8e8-9533-40ca-a2cd-ad666b17c204">
+      			<RemoveFolder Id='CybertoneMenuFolder' On='uninstall' /> 
+    			<RegistryValue
+    				Root='HKCU'
+    				Key='Software\Cybertone'
+    				Type='string'
+    				Value='installed'
+    				KeyPath='yes'
+    			/>
+      		</Component>
       	</Directory>
       </Directory>
 
@@ -46,104 +55,174 @@
           elements below this one to create subdirectories or add <File /> elements
           to add files to a directory
         -->
-        <Directory Id="INSTALLDIR" Name="XNADemo">
-      		<Directory Id="Content" Name="Content">
-        		<Directory Id="Audio" Name="Audio">
-      				<Component Id="MainThemeWMA" Guid="eb1baa61-41e1-476e-a58f-f6e530a5799a">
-						<File
-							Id="MainThemeWMA"
-							Name="MainTheme.wma"
-							Source="$(sys.SOURCEFILEDIR)/../Content/Content/Audio/MainTheme.wma" />
-      				</Component>
-        			<Component Id="MainThemeXNB" Guid="64d1e060-10ec-4eb5-b0eb-6e10e77b7a9e">
-						<File
-							Id="MainThemeXNB"
-							Name="MainTheme.xnb"
-							Source="$(sys.SOURCEFILEDIR)/../Content/Content/Audio/MainTheme.xnb" />
-					</Component>
-      			</Directory>
-        		<Directory Id="Mesh" Name="Mesh">
-      				<Component Id="dudeXNB" Guid="8fba5477-d82a-4f10-b734-23fb3faa3e5f">
-        				<File
-        					Id="dudeXNB"
-        					Name="dude.xnb"
-        					Source="$(sys.SOURCEFILEDIR)/../Content/Content/Mesh/dude.xnb" />
-        			</Component>
-      				<Component Id="head_0XNB" Guid="05468aca-88ad-4a17-a481-250cc8e1c5c0">
-        				<File
-        					Id="head_0XNB"
-        					Name="head_0.xnb"
-      						Source="$(sys.SOURCEFILEDIR)/../Content/Content/Mesh/head_0.xnb" />
-        			</Component>
-      				<Component Id="jacket_0XNB" Guid="3f928ee5-fcb4-4544-a3b6-918b9acf1744">
-        				<File
-        					Id="jacket_0XNB"
-        					Name="jacket_0.xnb"
-        					Source="$(sys.SOURCEFILEDIR)/../Content/Content/Mesh/jacket_0.xnb" />
-        			</Component>
-      				<Component Id="pants_0XNB" Guid="dc2529cb-ed85-4111-8725-0223a34507d3">
-        				<File
-        					Id="pants_0XNB"
-        					Name="pants_0.xnb"
-        					Source="$(sys.SOURCEFILEDIR)/../Content/Content/Mesh/pants_0.xnb" />
-        			</Component>
-      				<Component Id="upBodyC_0XNB" Guid="869e68f7-367b-49aa-a65e-45ce49a99455">
-        				<File
-        					Id="upBodyC_0XNB"
-        					Name="upBodyC_0.xnb"
-        					Source="$(sys.SOURCEFILEDIR)/../Content/Content/Mesh/upBodyC_0.xnb" />
-        			</Component>
-      			</Directory>
-        	</Directory>
-
-          <!--
-            Any <File /> element must be contained in a <Component /> element.
-            Components are entirely internal to the installs and group inseperable
-            partS of your game. For example, you could have 4 components:
-            "shared", "game", "editor" and "docs".
-
-            An installer then sets up a series of features (see <Feature /> in Setup.wxs),
-            where each feature points to a number of components. Following the previous
-            example, two features named "game" and "editor" could be imagined where
-            both point to the "shared" component and to their own component.
-          -->
-			<Component Id="GameExecutableAndLicense" Guid="a04fbdf9-b110-4559-afb0-9a6f04a8335a" DiskId="1">
-				<File
-					Id="LicenseFile" Name="license.rtf"
-					Source="$(sys.SOURCEFILEDIR)/../Documents/license.rtf"
-				/>
-				<!-- <File
-					Id="IconFile" Name="Game.ico"
-					Source="$(sys.SOURCEFILEDIR)/../Content/Game.ico"
-				/> -->
-				<File
-					Id="GameExecutable" Name="XNADemo.exe" KeyPath="yes"
-					Source="$(sys.SOURCEFILEDIR)/../Content/XNADemo.exe">
-					
-		<!--
-		Let the installer create a shorcut to this file in the start menu. There are
-		several ways to do this. For some more in-depth explanation, visit this url: 
-		
-		http://blogs.technet.com/alexshev/pages/from-msi-to-wix-part-10-shortcuts.aspx
-		-->
-					<Shortcut
-						Id="MyGameShortcut"
-						Name="XNA Demo"
-						Directory="MyGameProgramMenuFolder"
-						Advertise="yes"
-						WorkingDirectory="INSTALLDIR" Icon="GameIcon.exe"
-					>
-						<Icon Id="GameIcon.exe" SourceFile="$(sys.SOURCEFILEDIR)/../Content/Game.ico" />
-					</Shortcut>
-				</File>
-			</Component>
-			<Component Id="SkinnedModelDll" Guid="ef5e795b-f33f-4b8c-a442-1bb62c1747f0">
-	        	<File
-					Id="SkinnedModelDll"
-	        		Name="SkinnedModel.dll"
-	        		Source="$(sys.SOURCEFILEDIR)/../Content/SkinnedModel.dll" />
-        	</Component>
-        </Directory>
+      	<Directory Id="ManufacturerDir" Name="Cybertone">
+	        <Directory Id="INSTALLDIR" Name="XNA 4.0 Demo">
+	      		<Directory Id="Content" Name="Content">
+	        		<Directory Id="Audio" Name="Audio">
+	      				<Component Id="MainThemeWMA" Guid="eb1baa61-41e1-476e-a58f-f6e530a5799a">
+							<File
+								Id="MainThemeWMA"
+								Name="MainTheme.wma"
+								Source="$(sys.SOURCEFILEDIR)/../Content/Content/Audio/MainTheme.wma" />
+	      				</Component>
+	        			<Component Id="MainThemeXNB" Guid="64d1e060-10ec-4eb5-b0eb-6e10e77b7a9e">
+							<File
+								Id="MainThemeXNB"
+								Name="MainTheme.xnb"
+								Source="$(sys.SOURCEFILEDIR)/../Content/Content/Audio/MainTheme.xnb" />
+						</Component>
+	      			</Directory>
+	      			<Directory Id="Fonts" Name="Fonts">
+	      				<Component Id="VerdanaXNB" Guid="5ccb4087-a2e4-4d89-a7b6-0b97e605cfce">
+							<File
+								Id="VerdanaXNB"
+								Name="Verdana.xnb"
+								Source="$(sys.SOURCEFILEDIR)/../Content/Content/Fonts/Verdana.xnb" />
+	      				</Component>
+	      			</Directory>
+	        		<Directory Id="Mesh" Name="Mesh">
+	      				<Directory Id="Dude" Name="Dude">
+		      				<Component Id="dudeXNB" Guid="8fba5477-d82a-4f10-b734-23fb3faa3e5f">
+		        				<File
+		        					Id="dudeXNB"
+		        					Name="dude.xnb"
+		        					Source="$(sys.SOURCEFILEDIR)/../Content/Content/Mesh/Dude/dude.xnb" />
+		        			</Component>
+		      				<Component Id="dudeXNBHead_0XNB" Guid="05468aca-88ad-4a17-a481-250cc8e1c5c0">
+		        				<File
+		        					Id="head_0XNB"
+		        					Name="head_0.xnb"
+		      						Source="$(sys.SOURCEFILEDIR)/../Content/Content/Mesh/Dude/head_0.xnb" />
+		        			</Component>
+		      				<Component Id="dudeXNBJacket_0XNB" Guid="3f928ee5-fcb4-4544-a3b6-918b9acf1744">
+		        				<File
+		        					Id="jacket_0XNB"
+		        					Name="jacket_0.xnb"
+		        					Source="$(sys.SOURCEFILEDIR)/../Content/Content/Mesh/Dude/jacket_0.xnb" />
+		        			</Component>
+		      				<Component Id="dudeXNBPants_0XNB" Guid="dc2529cb-ed85-4111-8725-0223a34507d3">
+		        				<File
+		        					Id="pants_0XNB"
+		        					Name="pants_0.xnb"
+		        					Source="$(sys.SOURCEFILEDIR)/../Content/Content/Mesh/Dude/pants_0.xnb" />
+		        			</Component>
+		      				<Component Id="dudeXNBUpBodyC_0XNB" Guid="869e68f7-367b-49aa-a65e-45ce49a99455">
+		        				<File
+		        					Id="upBodyC_0XNB"
+		        					Name="upBodyC_0.xnb"
+		        					Source="$(sys.SOURCEFILEDIR)/../Content/Content/Mesh/Dude/upBodyC_0.xnb" />
+		        			</Component>
+	        			</Directory>
+	      				<Directory Id="Landscape" Name="Landscape">
+		      				<Component Id="Level0XNB" Guid="77064e85-56b1-4898-9cec-5d41efc5b48a">
+		        				<File
+		        					Id="Level0XNB"
+		        					Name="Level0.xnb"
+		        					Source="$(sys.SOURCEFILEDIR)/../Content/Content/Mesh/Landscape/Level0.xnb" />
+		        			</Component>
+		      				<Component Id="Level0XNBPlane001CompleteMap_0XNB" Guid="914ecd04-6d4a-441e-b205-624107d5eb8b">
+		        				<File
+		        					Id="Plane001CompleteMap_0XNB"
+		        					Name="Plane001CompleteMap_0.xnb"
+		      						Source="$(sys.SOURCEFILEDIR)/../Content/Content/Mesh/Landscape/Plane001CompleteMap_0.xnb" />
+		        			</Component>
+	        			</Directory>
+	      				<Directory Id="SkyBox" Name="SkyBox">
+		      				<Component Id="skyboxXNB" Guid="d89c5415-51d9-4a3f-8ca9-4d53674ed25f">
+		        				<File
+		        					Id="skyboxXNB"
+		        					Name="skybox.xnb"
+		        					Source="$(sys.SOURCEFILEDIR)/../Content/Content/Mesh/SkyBox/skybox.xnb" />
+		        			</Component>
+		      				<Component Id="skyboxXNBBack_0XNB" Guid="715e79cb-21b7-4266-806b-4f47968cafbc">
+		        				<File
+		        					Id="back_0XNB"
+		        					Name="back_0.xnb"
+		        					Source="$(sys.SOURCEFILEDIR)/../Content/Content/Mesh/SkyBox/back_0.xnb" />
+		        			</Component>
+	        				<Component Id="skyboxXNBBottom_0XNB" Guid="7897624c-1532-4e23-9ccf-9c03caab56e2">
+		        				<File
+		        					Id="bottom_0XNB"
+		        					Name="bottom_0.xnb"
+		        					Source="$(sys.SOURCEFILEDIR)/../Content/Content/Mesh/SkyBox/bottom_0.xnb" />
+		        			</Component>
+	        				<Component Id="skyboxXNBFront_0XNB" Guid="d691ed28-205a-48dc-b453-68e539ed0405">
+		        				<File
+		        					Id="front_0XNB"
+		        					Name="front_0.xnb"
+		        					Source="$(sys.SOURCEFILEDIR)/../Content/Content/Mesh/SkyBox/front_0.xnb" />
+		        			</Component>
+	        				<Component Id="skyboxXNBLeft_0XNB" Guid="aeffd428-4cf4-43ab-80d9-1e966332f9a3">
+		        				<File
+		        					Id="left_0XNB"
+		        					Name="left_0.xnb"
+		        					Source="$(sys.SOURCEFILEDIR)/../Content/Content/Mesh/SkyBox/left_0.xnb" />
+		        			</Component>
+	        				<Component Id="skyboxXNBRight_0XNB" Guid="8362ed50-ea4f-45d2-a77a-daa321d18dc7">
+		        				<File
+		        					Id="right_0XNB"
+		        					Name="right_0.xnb"
+		        					Source="$(sys.SOURCEFILEDIR)/../Content/Content/Mesh/SkyBox/right_0.xnb" />
+		        			</Component>
+	        				<Component Id="skyboxXNBTop_0XNB" Guid="e6ce25c9-4732-4047-9d5f-8fa59f068d74">
+		        				<File
+		        					Id="top_0XNB"
+		        					Name="top_0.xnb"
+		        					Source="$(sys.SOURCEFILEDIR)/../Content/Content/Mesh/SkyBox/top_0.xnb" />
+		        			</Component>
+	        			</Directory>
+	      			</Directory>
+	        	</Directory>
+	
+	          <!--
+	            Any <File /> element must be contained in a <Component /> element.
+	            Components are entirely internal to the installs and group inseperable
+	            partS of your game. For example, you could have 4 components:
+	            "shared", "game", "editor" and "docs".
+	
+	            An installer then sets up a series of features (see <Feature /> in Setup.wxs),
+	            where each feature points to a number of components. Following the previous
+	            example, two features named "game" and "editor" could be imagined where
+	            both point to the "shared" component and to their own component.
+	          -->
+				<Component Id="GameExecutableAndLicense" Guid="a04fbdf9-b110-4559-afb0-9a6f04a8335a" DiskId="1">
+					<File
+						Id="LicenseFile" Name="license.rtf"
+						Source="$(sys.SOURCEFILEDIR)/../Documents/license.rtf"
+					/>
+					<!-- <File
+						Id="IconFile" Name="Game.ico"
+						Source="$(sys.SOURCEFILEDIR)/../Content/Game.ico"
+					/> -->
+					<File
+						Id="GameExecutable" Name="XNADemo.exe" KeyPath="yes"
+						Source="$(sys.SOURCEFILEDIR)/../Content/Cybertone XNA 4.0 Demo.exe">
+						
+			<!--
+			Let the installer create a shorcut to this file in the start menu. There are
+			several ways to do this. For some more in-depth explanation, visit this url: 
+			
+			http://blogs.technet.com/alexshev/pages/from-msi-to-wix-part-10-shortcuts.aspx
+			-->
+						<Shortcut
+							Id="XNADemoShortcut"
+							Name="XNA 4.0 Demo"
+							Directory="XNADemoProgramMenuFolder"
+							Advertise="yes"
+							WorkingDirectory="INSTALLDIR" Icon="GameIcon.exe"
+						>
+							<Icon Id="GameIcon.exe" SourceFile="$(sys.SOURCEFILEDIR)/../Content/Game.ico" />
+						</Shortcut>
+					</File>
+				</Component>
+				<Component Id="SkinnedModelDll" Guid="ef5e795b-f33f-4b8c-a442-1bb62c1747f0">
+		        	<File
+						Id="SkinnedModelDll"
+		        		Name="SkinnedModel.dll"
+		        		Source="$(sys.SOURCEFILEDIR)/../Content/SkinnedModel.dll" />
+	        	</Component>
+	        </Directory>
+      	</Directory>
       </Directory>
     </DirectoryRef>
   </Fragment>

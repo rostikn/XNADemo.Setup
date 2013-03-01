@@ -4,7 +4,7 @@
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
   <Fragment>
     <UI>
-      <Dialog Id="RequireDotNetDialog" Width="370" Height="270" Title="[ProductName]">
+      <Dialog Id="RequireDotNetDialog" Width="370" Height="270" Title="[Manufacturer] [ProductName]">
         
         <!--
           Banner at the top of the dialog

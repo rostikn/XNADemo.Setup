@@ -11,7 +11,7 @@
   -->
   <Product
     Id="d5dc9ece-2159-48c8-93a3-803981671f48"
-    Name="XNA Demo"
+    Name="XNA 4.0 Demo"
     Language="1033"
     Version="1.0.0.0"
     UpgradeCode="d5dc9ece-2159-48c8-93a3-803981671f48"
@@ -25,8 +25,8 @@
       http://wix.sourceforge.net/manual-wix2/wix_xsd_package.htm
     -->
     <Package
-      Description="Setup for Cybertone XNA Demo"
-      Comments="Installs Cybertone XNA Demo on the system"
+      Description="Setup for Cybertone XNA 4.0 Demo"
+      Comments="Installs Cybertone XNA 4.0 Demo on the system"
       InstallerVersion="200"
       Compressed="yes"
     />
@@ -115,15 +115,26 @@
     <Directory Id="TARGETDIR" Name="SourceDir"/>
 
     <Feature Id="MyFeature" Title="Required Files" Level="1">
-		<ComponentRef Id="StartMenuEntriesComponent" />
+  		<ComponentRef Id="CybertoneMenuCompanyEntryComponent" />
+		<ComponentRef Id="StartMenuGameEntriyComponent" />
     	<ComponentRef Id="GameExecutableAndLicense" />
 		<ComponentRef Id="MainThemeWMA" />
 		<ComponentRef Id="MainThemeXNB" />
   		<ComponentRef Id="dudeXNB" />
-  		<ComponentRef Id="head_0XNB" />
-  		<ComponentRef Id="jacket_0XNB" />
-  		<ComponentRef Id="pants_0XNB" />
-  		<ComponentRef Id="upBodyC_0XNB" />
+  		<ComponentRef Id="dudeXNBHead_0XNB" />
+  		<ComponentRef Id="dudeXNBJacket_0XNB" />
+  		<ComponentRef Id="dudeXNBPants_0XNB" />
+  		<ComponentRef Id="dudeXNBUpBodyC_0XNB" />
+    	<ComponentRef Id="Level0XNB" />
+  		<ComponentRef Id="Level0XNBPlane001CompleteMap_0XNB" />
+  		<ComponentRef Id="skyboxXNB" />
+  		<ComponentRef Id="skyboxXNBBack_0XNB" />
+  		<ComponentRef Id="skyboxXNBBottom_0XNB" />
+  		<ComponentRef Id="skyboxXNBFront_0XNB" />
+    	<ComponentRef Id="skyboxXNBLeft_0XNB" />
+  		<ComponentRef Id="skyboxXNBRight_0XNB" />
+  		<ComponentRef Id="skyboxXNBTop_0XNB" />
+    	<ComponentRef Id="VerdanaXNB" />
   		<ComponentRef Id="SkinnedModelDll" />
     </Feature>  
     <!-- END INSTALL DESCRIPTION -->

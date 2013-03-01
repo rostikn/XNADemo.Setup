@@ -4,8 +4,8 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <OutputType>Package</OutputType>
-    <RootNamespace>Cybertone XNA Demo</RootNamespace>
-    <OutputName>Cybertone XNA Demo</OutputName>
+    <RootNamespace>Cybertone XNA 4.0 Demo</RootNamespace>
+    <OutputName>Cybertone XNA 4.0 Demo</OutputName>
     <WixToolPath Condition=" '$(WixToolPath)' == '' ">$(SharpDevelopBinPath)\Tools\Wix</WixToolPath>
     <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' ">$(WixToolPath)\wix.targets</WixTargetsPath>
     <WixTasksPath Condition=" '$(WixTasksPath)' == '' ">$(WixToolPath)\WixTasks.dll</WixTasksPath>
@@ -28,15 +28,24 @@
   <ItemGroup>
     <None Include="Content\Content\Audio\MainTheme.wma" />
     <None Include="Content\Content\Audio\MainTheme.xnb" />
-    <None Include="Content\Content\Mesh\dude.xnb" />
-    <None Include="Content\Content\Mesh\head_0.xnb" />
-    <None Include="Content\Content\Mesh\jacket_0.xnb" />
-    <None Include="Content\Content\Mesh\pants_0.xnb" />
-    <None Include="Content\Content\Mesh\upBodyC_0.xnb" />
+    <None Include="Content\Content\Fonts\Verdana.xnb" />
+    <None Include="Content\Content\Mesh\Dude\dude.xnb" />
+    <None Include="Content\Content\Mesh\Dude\head_0.xnb" />
+    <None Include="Content\Content\Mesh\Dude\jacket_0.xnb" />
+    <None Include="Content\Content\Mesh\Dude\pants_0.xnb" />
+    <None Include="Content\Content\Mesh\Dude\upBodyC_0.xnb" />
+    <None Include="Content\Content\Mesh\Landscape\Level0.xnb" />
+    <None Include="Content\Content\Mesh\Landscape\Plane001CompleteMap_0.xnb" />
+    <None Include="Content\Content\Mesh\SkyBox\back_0.xnb" />
+    <None Include="Content\Content\Mesh\SkyBox\bottom_0.xnb" />
+    <None Include="Content\Content\Mesh\SkyBox\front_0.xnb" />
+    <None Include="Content\Content\Mesh\SkyBox\left_0.xnb" />
+    <None Include="Content\Content\Mesh\SkyBox\right_0.xnb" />
+    <None Include="Content\Content\Mesh\SkyBox\skybox.xnb" />
+    <None Include="Content\Content\Mesh\SkyBox\top_0.xnb" />
     <None Include="Content\Game.ico" />
     <None Include="Content\SkinnedModel.dll" />
-    <None Include="Content\XNADemo.exe" />
-    <None Include="Content\XNADemo.pdb" />
+    <None Include="Content\Cybertone XNA 4.0 Demo.exe" />
     <None Include="Resources\DirectX-64.bmp" />
     <None Include="Resources\DotNet-64.bmp" />
     <None Include="Resources\GreenCheck-16.ico" />
@@ -74,7 +83,11 @@
     <Folder Include="Content" />
     <Folder Include="Content\Content" />
     <Folder Include="Content\Content\Audio" />
+    <Folder Include="Content\Content\Fonts" />
     <Folder Include="Content\Content\Mesh" />
+    <Folder Include="Content\Content\Mesh\Dude" />
+    <Folder Include="Content\Content\Mesh\Landscape" />
+    <Folder Include="Content\Content\Mesh\SkyBox" />
     <Folder Include="Documents" />
     <Folder Include="Resources" />
     <Folder Include="Source" />

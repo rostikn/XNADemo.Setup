@@ -2,7 +2,7 @@
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
   <Fragment>
     <UI>
-      <Dialog Id="OutOfDiskDlg" Width="370" Height="270" Title="[ProductName] [Setup]" NoMinimize="yes">
+      <Dialog Id="OutOfDiskDlg" Width="370" Height="270" Title="[Manufacturer] [ProductName] [Setup]" NoMinimize="yes">
         <Control Id="OK" Type="PushButton" X="304" Y="243" Width="56" Height="17" Default="yes" Cancel="yes" Text="[Button_OK]">
           <Publish Event="EndDialog" Value="Return">1</Publish>
         </Control>
