@@ -7,7 +7,7 @@
         <RadioButton Text="I &amp;do not accept the terms in the License Agreement" X="5" Y="20" Width="300" Height="15"  Value="No"/>
       </RadioButtonGroup>
 
-      <Dialog Id="ViewLicenseAgreementDialog" Width="370" Height="270" Title="[Manufacturer] [ProductName]">
+      <Dialog Id="ViewLicenseAgreementDialog" Width="370" Height="270" Title="[Manufacturer] [ProductName] v[ProductVersion]">
 
         <!--
           Banner an title at the top of the dialog

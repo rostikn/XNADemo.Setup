@@ -6,7 +6,7 @@
         Id="WrongOperatingSystemDialog"
         Width="260"
         Height="100"
-        Title="[Manufacturer] [ProductName] [Setup]"
+        Title="[Manufacturer] [ProductName] v[ProductVersion] [Setup]"
         NoMinimize="yes"
       >
 

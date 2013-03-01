@@ -4,7 +4,7 @@
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
   <Fragment>
     <UI>
-      <Dialog Id="PrerequisitesDialog" Width="370" Height="270" Title="[Manufacturer] [ProductName]">
+      <Dialog Id="PrerequisitesDialog" Width="370" Height="270" Title="[Manufacturer] [ProductName] v[ProductVersion]">
         
         <!--
           Banner at the top of the dialog

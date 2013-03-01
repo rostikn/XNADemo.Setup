@@ -8,7 +8,7 @@
         Id="ShaderWarningDialog"
         Width="260"
         Height="134"
-        Title="[Manufacturer] [ProductName] [Setup]"
+        Title="[Manufacturer] [ProductName] v[ProductVersion] [Setup]"
         NoMinimize="yes"
       >
 

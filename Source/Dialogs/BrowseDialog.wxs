@@ -2,7 +2,7 @@
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
   <Fragment>
     <UI>
-      <Dialog Id="BrowseDialog" Width="370" Height="270" Title="[Manufacturer] [ProductName] [Setup]" NoMinimize="yes">
+      <Dialog Id="BrowseDialog" Width="370" Height="270" Title="[Manufacturer] [ProductName] v[ProductVersion] [Setup]" NoMinimize="yes">
         <Control Id="PathEdit" Type="PathEdit" X="84" Y="202" Width="261" Height="18" Property="_BrowseProperty" Indirect="yes" />
         <Control Id="OK" Type="PushButton" X="304" Y="243" Width="56" Height="17" Default="yes" Text="[Button_OK]">
           <Publish Event="EndDialog" Value="Return">1</Publish>

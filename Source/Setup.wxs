@@ -13,7 +13,7 @@
     Id="d5dc9ece-2159-48c8-93a3-803981671f48"
     Name="XNA 4.0 Demo"
     Language="1033"
-    Version="1.0.0.0"
+    Version="0.2.3.0"
     UpgradeCode="d5dc9ece-2159-48c8-93a3-803981671f48"
     Manufacturer="Cybertone" 
   >
@@ -25,8 +25,8 @@
       http://wix.sourceforge.net/manual-wix2/wix_xsd_package.htm
     -->
     <Package
-      Description="Setup for Cybertone XNA 4.0 Demo"
-      Comments="Installs Cybertone XNA 4.0 Demo on the system"
+      Description="Setup for Cybertone XNA 4.0 Demo v0.2.3.0"
+      Comments="Installs Cybertone XNA 4.0 Demo v0.2.3.0 on the system"
       InstallerVersion="200"
       Compressed="yes"
     />

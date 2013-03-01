@@ -2,7 +2,7 @@
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
   <Fragment>
     <UI>
-      <Dialog Id="SelectFolderDialog" Width="370" Height="270" Title="[Manufacturer] [ProductName]" TrackDiskSpace="yes">
+      <Dialog Id="SelectFolderDialog" Width="370" Height="270" Title="[Manufacturer] [ProductName] v[ProductVersion]" TrackDiskSpace="yes">
         <Control Id="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Default="yes" Text="[Button_Next]">
           <Publish Event="NewDialog" Value="VerifyReadyDialog">1</Publish>
         </Control>
@@ -24,7 +24,7 @@
         <Control Id="BannerLine" Type="Line" X="0" Y="44" Width="374" Height="0" />    
         <Control Id="BottomLine" Type="Line" X="4" Y="234" Width="370" Height="0" />  
         <Control Id="Description" Type="Text" X="25" Y="23" Width="280" Height="15" Transparent="yes" NoPrefix="yes">
-          <Text>This is the folder where [Manufacturer] [ProductName] will be installed.</Text>
+          <Text>This is the folder where [Manufacturer] [ProductName] v[ProductVersion] will be installed.</Text>
         </Control>      
         <Control Id="Title" Type="Text" X="15" Y="6" Width="200" Height="15" Transparent="yes" NoPrefix="yes">
           <Text>[TitleFont]Select Installation Folder</Text>

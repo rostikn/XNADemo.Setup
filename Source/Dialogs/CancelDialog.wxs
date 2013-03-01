@@ -2,9 +2,9 @@
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
   <Fragment>
     <UI>
-      <Dialog Id="CancelDialog" Width="260" Height="85" Title="[Manufacturer] [ProductName] [Setup]" NoMinimize="yes">
+      <Dialog Id="CancelDialog" Width="260" Height="85" Title="[Manufacturer] [ProductName] v[ProductVersion] [Setup]" NoMinimize="yes">
         <Control Id="Text" Type="Text" X="48" Y="15" Width="194" Height="30">
-          <Text>Are you sure you want to cancel [Manufacturer] [ProductName] installation?</Text>
+          <Text>Are you sure you want to cancel [Manufacturer] [ProductName] v[ProductVersion] installation?</Text>
         </Control>
         <Control Id="Yes" Type="PushButton" X="72" Y="57" Width="56" Height="17" Text="[Button_Yes]">
           <Publish Event="EndDialog" Value="Exit">1</Publish>

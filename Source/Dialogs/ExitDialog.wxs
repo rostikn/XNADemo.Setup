@@ -2,7 +2,7 @@
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
   <Fragment>
     <UI>
-      <Dialog Id="ExitDialog" Width="370" Height="270" Title="[Manufacturer] [ProductName]" NoMinimize="yes">
+      <Dialog Id="ExitDialog" Width="370" Height="270" Title="[Manufacturer] [ProductName] v[ProductVersion]" NoMinimize="yes">
         <Control Id="Finish" Type="PushButton" X="236" Y="243" Width="56" Height="17" Default="yes" Cancel="yes" Text="[Button_Finish]">
           <Publish Event="EndDialog" Value="Return">1</Publish>
         </Control>
@@ -14,7 +14,7 @@
           <Text>Click the Finish button to exit.</Text>
         </Control>
         <Control Id="Title" Type="Text" X="135" Y="20" Width="220" Height="60" Transparent="yes" NoPrefix="yes">
-          <Text>[BigFont]Completing the [Manufacturer] [ProductName] installation.</Text>
+          <Text>[BigFont]Completing the [Manufacturer] [ProductName] v[ProductVersion] installation.</Text>
         </Control>
       </Dialog>
     </UI>
